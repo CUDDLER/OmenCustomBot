@@ -7,12 +7,12 @@ bot=telebot.TeleBot(config.token)
 @bot.message_handler(commands=['start', 'help']) #Старт бота
 def start_handler(message):
    if message.text == 'Привет' or '/start':
-       keyboard_start = types.InlineKeyboardMarkup()
-       callback_button = types.InlineKeyboardButton(text="Начать", callback_data="test")
-       keyboard.add(callback_button)
+       # keyboard_start = types.InlineKeyboardMarkup()
+       # callback_button = types.InlineKeyboardButton(text="Начать", callback_data="test")
+       # keyboard.add(callback_button)
        bot.send_message(message.chat.id, 'Привет, ' + str(message.chat.first_name) + ', это бот-конфигуратор **OmenBoyzCustom** \n'
                                          'Я помогу тебе сделать именно тот дизайн, который ты хочешь!\n '
-                                         '__Жми "Начать"__',  reply_markup=keyboard_start)
+                                         '__Жми "Начать"__')#reply_markup=keyboard_start не работает пока
    elif message.text == 'Помощь' or '/help':
        bot.send_message(message.chat.id, 'Чем тебе помочь?')
 
