@@ -9,9 +9,9 @@ def command_handler(message):
         keyboard_start = telebot.types.InlineKeyboardMarkup()
         callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="test")
         keyboard_start.add(callback_button)
-        bot.send_message(message.chat.id, "Привет, " + str(message.chat.first_name) + ", это бот-конфигуратор *OmenBoyzCustom* \n"
+        bot.send_message(message.chat.id, "Привет, " + str(message.chat.first_name) + ", это бот-конфигуратор <b>OmenBoyzCustom</b> \n"
                                          "Я помогу тебе сделать именно тот дизайн, который ты хочешь!\n "
-                                         "_Жми Начать_", reply_markup=keyboard_start)
+                                         "Жми <b>Начать</b>", reply_markup=keyboard_start, parse_mode=telebot.ParseMode.HTML )
     elif message.text == 'Помощь' or '/help':
         bot.send_message(message.chat.id, 'Чем тебе помочь?')
 
