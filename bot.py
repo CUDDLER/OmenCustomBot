@@ -1,11 +1,10 @@
 import config
 import telebot
 
-
 bot=telebot.TeleBot(config.token)
 
-@bot.message_handler(commands=['start', 'help']) #Старт бота
-def start_handler(message):
+@bot.message_handler(content_types=["text"]) #Старт бота
+def command_handler(message):
    if message.text == 'Привет' or '/start':
        # keyboard_start = types.InlineKeyboardMarkup()
        # callback_button = types.InlineKeyboardButton(text="Начать", callback_data="test")
@@ -16,7 +15,6 @@ def start_handler(message):
    elif message.text == 'Помощь' or '/help':
        bot.send_message(message.chat.id, 'Чем тебе помочь?')
 
-@bot.message_handler(content_types=["text"])
 def repeat_all_messages(message): # Название функции не играет никакой роли, в принципе
     bot.send_message(message.chat.id, message.text)
 
