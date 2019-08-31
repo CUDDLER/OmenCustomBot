@@ -12,10 +12,11 @@ def command_handler(message: Message):
                                                                  'Я помогу тебе сделать именно тот дизайн, который ты хочешь!\n '
                                                                  'Жми "Начать"')
 
-@bot.message_handler(content_types=["text"]) #Старт бота
+@bot.message_handler(content_types=["text"]) #Старт бота для сообщений
 def command_handler(message):
     if 'Помощь' or '/help' in message.text:
         bot.send_message(message.chat.id, 'Чем тебе помочь?')
+
 def repeat_all_messages(message): # Название функции не играет никакой роли, в принципе
     bot.send_message(message.chat.id, message.text)
 
