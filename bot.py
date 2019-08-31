@@ -4,7 +4,7 @@ import telebot
 bot=telebot.TeleBot(config.token)
 
 @bot.message_handler(commands=['start'])
-def command_handler(message: Message):
+def command_handler(message):
     keyboard_start = telebot.types.InlineKeyboardMarkup()
     callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="test")
     keyboard_start.add(callback_button)
