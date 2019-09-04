@@ -21,8 +21,10 @@ def command_handler(message):
             return
         elif 'Конфигуратор' or '/config' in message.text:
             bot.reply_to(message, 'Начала конфигуратора')
-        else: 
+            return
+        else:
             bot.send_message(message, message.text)
+    return
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
