@@ -29,8 +29,8 @@ def command_handler(message):
     callback_button_inst = telebot.types.InlineKeyboardButton(url="https://instagram.com/omenboyz", text="Inst")
     callback_button_instcustom = telebot.types.InlineKeyboardButton(url="https://vk.com/omenboyzcustoms", text="ВК Custom")
     callback_button_vkcustom = telebot.types.InlineKeyboardButton(url="https://instagram.com/omenboyzcustoms", text="Inst Custom")
-    keyboard_url.add([[callback_button_vk, callback_button_vkcustom],
-                      [callback_button_instcustom, callback_button_inst]])
+    keyboard_url.add([callback_button_vk, callback_button_vkcustom],
+                      [callback_button_instcustom, callback_button_inst])
 
     bot.send_message(message.from_user.id, 'Ниже представлены наши сети, тебя там ждут :)', reply_markup = keyboard_url)
 
