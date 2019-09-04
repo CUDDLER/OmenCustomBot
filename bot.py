@@ -19,9 +19,9 @@ def command_handler(message):
     if 'Помощь' or '/help' in message.text:
         bot.reply_to(message, 'Чем тебе помочь?')
         return
-    #if 'Конфигуратор' or '/config' in message.text:
-
-    #bot.reply_to(message, 'Начала конфигуратора')
+def help_handler(message):
+    if 'Конфигуратор' or '/config' in message.text:
+        bot.reply_to(message, 'Начала конфигуратора')
     bot.send_message(message, message.text)
 
 if __name__ == '__main__':
