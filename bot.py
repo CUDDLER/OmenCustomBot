@@ -15,11 +15,11 @@ def command_handler(message):
 @bot.message_handler(content_types=["text"]) #Старт бота для сообщений
 def command_handler(message):
     if 'Помощь' or '/help' in message.text:
-        bot.send_message(message.chat.id, 'Чем тебе помочь?')
+        bot.reply_to(message.chat.id, 'Чем тебе помочь?')
         return
-    elif 'Конфигуратор' or '/config' in message.text:
-        bot.send_message(message.chat.id, 'Начала конфигуратора')
-        return\
+    if 'Конфигуратор' or '/config' in message.text:
+        bot.reply_to(message.chat.id, 'Начала конфигуратора')
+        return
     bot.send_message(message.chat.id, message.text)
 
 if __name__ == '__main__':
