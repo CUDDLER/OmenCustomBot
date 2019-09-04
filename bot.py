@@ -24,7 +24,7 @@ def command_handler(message):
 
 @bot.message_handler(commands=['sources'])
 def command_handler(message):
-    keyboard_url = telebot.types.InlineKeyboardMarkup()
+    keyboard_url = telebot.types.InlineKeyboardMarkup(resize_keyboard="False")
     callback_button_vk = telebot.types.InlineKeyboardButton(url="https://vk.com/omenboyzapparel", text="ВК")
     callback_button_inst = telebot.types.InlineKeyboardButton(url="https://instagram.com/omenboyz", text="Inst")
     callbeck_button_instcustom = telebot.types.InlineKeyboardButton(url="instagram.com/omenboyzcustoms", text="ВК Custom")
