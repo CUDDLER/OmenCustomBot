@@ -22,9 +22,8 @@ def command_handler(message):
         elif 'Конфигуратор' or '/config' in message.text:
             bot.reply_to(message, 'Начала конфигуратора')
             return
-        else:
-            bot.send_message(message, message.text)
-    return
+    except Exception as error:
+        print("Excepcion in forward handler. Info: {}".format(error))
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
