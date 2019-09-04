@@ -16,8 +16,10 @@ def command_handler(message):
 def command_handler(message):
     if 'Помощь' or '/help' in message.text:
         bot.send_message(message.chat.id, 'Чем тебе помочь?')
-    else: # Название функции не играет никакой роли, в принципе
+        return
+    else:
         bot.send_message(message.chat.id, message.text)
+        return
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
