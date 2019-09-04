@@ -15,7 +15,6 @@ def command_handler(message):
 
 @bot.message_handler(content_types=["text"]) #Старт бота для сообщений
 def command_handler(message):
-    print(message.text)
     if 'Помощь' or '/help' in message.text:
         bot.reply_to(message, 'Чем тебе помочь?')
         return
