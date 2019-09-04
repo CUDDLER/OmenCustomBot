@@ -17,9 +17,10 @@ def command_handler(message):
     if 'Помощь' or '/help' in message.text:
         bot.send_message(message.chat.id, 'Чем тебе помочь?')
         return
-    else:
-        bot.send_message(message.chat.id, message.text)
-        return
+    elif 'Конфигуратор' or '/config' in message.text:
+        bot.send_message(message.chat.id, 'Начала конфигуратора')
+        return\
+    bot.send_message(message.chat.id, message.text)
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
