@@ -35,7 +35,7 @@ def command_handler(message):
 @bot.message_handler(content_types=["text"]) #Старт бота для сообщений
 def command_handler(message):
     #try:
-        return
+    #    return
     if message.text == "/config":
         bot.reply_to(message, 'Начала конфигуратора')
         return
