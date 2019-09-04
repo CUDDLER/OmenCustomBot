@@ -24,13 +24,15 @@ def command_handler(message):
 
 @bot.message_handler(commands=['sources'])
 def command_handler(message):
-    keyboard_url = telebot.types.InlineKeyboardMarkup()
+    keyboard_url = telebot.types.InlineKeyboardMarkup() # resize_keyboard="False"
     callback_button_vk = telebot.types.InlineKeyboardButton(url="https://vk.com/omenboyzapparel", text="ВК")
     callback_button_inst = telebot.types.InlineKeyboardButton(url="https://instagram.com/omenboyz", text="Inst")
     callback_button_instcustom = telebot.types.InlineKeyboardButton(url="https://vk.com/omenboyzcustoms", text="ВК Custom")
     callback_button_vkcustom = telebot.types.InlineKeyboardButton(url="https://instagram.com/omenboyzcustoms", text="Inst Custom")
-    keyboard_url.add(callback_button_vk,callback_button_vkcustom,callback_button_inst,callback_button_instcustom)
-    bot.send_message(message.from_user.id, 'Ниже представлены наши сети, тебя там ждут :)', reply_markup = keyboard_url, resize_keyboard="False")
+    array_sources_vk=[callback_button_vk, callback_button_vkcustom]
+    array_sources_inst=[callback_button_inst, callback_button_instcustom]
+    keyboard_url.add(array_sources_vk, array_sources_inst)
+    bot.send_message(message.from_user.id, 'Ниже представлены наши сети, тебя там ждут :)', reply_markup = keyboard_url)
 
 @bot.message_handler(content_types=["text"]) #Старт бота для сообщений
 def command_handler(message):
