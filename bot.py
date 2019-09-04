@@ -15,13 +15,14 @@ def command_handler(message):
 
 @bot.message_handler(content_types=["text"]) #Старт бота для сообщений
 def command_handler(message):
-    if 'Помощь' or '/help' in message.text:
-        bot.reply_to(message, 'Чем тебе помочь?')
-        return
-def help_handler(message):
-    if 'Конфигуратор' or '/config' in message.text:
-        bot.reply_to(message, 'Начала конфигуратора')
-    bot.send_message(message, message.text)
+    try:
+        if 'Помощь' or '/help' in message.text:
+            bot.reply_to(message, 'Чем тебе помочь?')
+            return
+        elif 'Конфигуратор' or '/config' in message.text:
+            bot.reply_to(message, 'Начала конфигуратора')
+        else: 
+            bot.send_message(message, message.text)
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
