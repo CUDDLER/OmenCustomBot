@@ -5,6 +5,7 @@ bot=telebot.TeleBot(config.token)
 
 @bot.message_handler(commands=['start'])
 def command_handler(message):
+    print(message.text)
     keyboard_start = telebot.types.InlineKeyboardMarkup()
     callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="test")
     keyboard_start.add(callback_button)
@@ -17,9 +18,9 @@ def command_handler(message):
     if 'Помощь' or '/help' in message.text:
         bot.reply_to(message, 'Чем тебе помочь?')
         return
-    if 'Конфигуратор' or '/config' in message.text:
-        bot.reply_to(message, 'Начала конфигуратора')
-        return
+    #if 'Конфигуратор' or '/config' in message.text:
+
+    #bot.reply_to(message, 'Начала конфигуратора')
     bot.send_message(message, message.text)
 
 if __name__ == '__main__':
