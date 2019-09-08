@@ -1,4 +1,5 @@
 import config
+import params
 import telebot
 
 bot=telebot.TeleBot(config.token)
@@ -8,19 +9,14 @@ def command_handler(message):
     keyboard_start = telebot.types.InlineKeyboardMarkup()
     callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="start_config")
     keyboard_start.add(callback_button)
-    bot.send_message(message.from_user.id, 'Привет, ' + str(message.chat.first_name) + ', это бот-конфигуратор OmenBoyzCustom \n'
-                                           'Я помогу тебе сделать именно тот дизайн, который ты хочешь!\n '
-                                           'Жми "Начать"')
+    bot.send_message(message.from_user.id, start_message)
 
 @bot.message_handler(commands=['help'])
 def command_handler(message):
     keyboard_start = telebot.types.InlineKeyboardMarkup()
     callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="")
     keyboard_start.add(callback_button)
-    bot.send_message(message.from_user.id, 'Доступные команды:'
-                          '/start — Запуск бота'
-                          '/help — Помощь'
-                          '/sources — Ресурсы OmenBoyz')
+    bot.send_message(message.from_user.id, help_message)
 
 @bot.message_handler(commands=['sources'])
 def command_handler(message):
