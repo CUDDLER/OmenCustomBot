@@ -9,14 +9,14 @@ def command_handler(message):
     keyboard_start = telebot.types.InlineKeyboardMarkup()
     callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="start_config")
     keyboard_start.add(callback_button)
-    bot.send_message(message.from_user.id, start_message)
+    bot.send_message(message.from_user.id, params.start_message)
 
 @bot.message_handler(commands=['help'])
 def command_handler(message):
     keyboard_start = telebot.types.InlineKeyboardMarkup()
     callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="")
     keyboard_start.add(callback_button)
-    bot.send_message(message.from_user.id, help_message)
+    bot.send_message(message.from_user.id, params.help_message)
 
 @bot.message_handler(commands=['sources'])
 def command_handler(message):
