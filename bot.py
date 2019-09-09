@@ -9,7 +9,8 @@ def command_handler(message):
     keyboard_start = telebot.types.InlineKeyboardMarkup()
     callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="start_config")
     keyboard_start.add(callback_button)
-    message(message.chat.first_name)
+    user=message.chat.first_name
+    message(user)
     bot.send_message(message.from_user.id, params.start_message)
 
 @bot.message_handler(commands=['help'])
@@ -28,7 +29,7 @@ def command_handler(message):
     callback_button_vkcustom = telebot.types.InlineKeyboardButton(url="https://instagram.com/omenboyzcustoms", text="Inst Custom")
     keyboard_url.add(callback_button_vk, callback_button_vkcustom,
                      callback_button_instcustom, callback_button_inst)
-
+    print(message.chat.first_name)
     bot.send_message(message.from_user.id, 'Ниже представлены наши сети, тебя там ждут :)', reply_markup = keyboard_url)
 
 @bot.message_handler(content_types=["text"]) #Старт бота для сообщений
