@@ -1,24 +1,24 @@
+import telebot
 import config
 import params
-import telebot
 
 bot=telebot.TeleBot(config.token)
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['start', 'help'])
 def command_handler(message):
-    keyboard_start = telebot.types.InlineKeyboardMarkup()
-    callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="start_config")
-    keyboard_start.add(callback_button)
-    user=message.chat.first_name
-    start_mes=message_all(user)
-    bot.send_message(message.from_user.id, start_mes)
+    if message.text == "/start":
+        keyboard_start = telebot.types.InlineKeyboardMarkup()
+        callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="start_config")
+        keyboard_start.add(callback_button)
+        user=message.chat.first_name
+        start_mes=message_all(user)
+        bot.send_message(message.from_user.id, start_mes)
 
-@bot.message_handler(commands=['help'])
-def command_handler(message):
-    keyboard_start = telebot.types.InlineKeyboardMarkup()
-    callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="")
-    keyboard_start.add(callback_button)
-    bot.send_message(message.from_user.id, params.help_message)
+    elif message.text == "/help":
+        keyboard_start = telebot.types.InlineKeyboardMarkup()
+        callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="")
+        keyboard_start.add(callback_button)
+        bot.send_message(message.from_user.id, params.help_message)
 
 @bot.message_handler(commands=['sources'])
 def command_handler(message):
