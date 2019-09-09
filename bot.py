@@ -1,26 +1,25 @@
-import config
 import telebot
+import config
+from params import message_all
+import params
 
 bot=telebot.TeleBot(config.token)
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['start', 'help'])
 def command_handler(message):
-    keyboard_start = telebot.types.InlineKeyboardMarkup()
-    callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="start_config")
-    keyboard_start.add(callback_button)
-    bot.send_message(message.from_user.id, 'Привет, ' + str(message.chat.first_name) + ', это бот-конфигуратор OmenBoyzCustom \n'
-                                           'Я помогу тебе сделать именно тот дизайн, который ты хочешь!\n '
-                                           'Жми "Начать"')
+    if message.text == "/start":
+        keyboard_start = telebot.types.InlineKeyboardMarkup()
+        callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="start_config")
+        keyboard_start.add(callback_button)
+        user=message.chat.first_name
+        start_mes=message_all(user)
+        bot.send_message(message.from_user.id, start_mes)
 
-@bot.message_handler(commands=['help'])
-def command_handler(message):
-    keyboard_start = telebot.types.InlineKeyboardMarkup()
-    callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="")
-    keyboard_start.add(callback_button)
-    bot.send_message(message.from_user.id, 'Доступные команды:'
-                          '/start — Запуск бота'
-                          '/help — Помощь'
-                          '/sources — Ресурсы OmenBoyz')
+    elif message.text == "/help":
+        keyboard_start = telebot.types.InlineKeyboardMarkup()
+        callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="")
+        keyboard_start.add(callback_button)
+        bot.send_message(message.from_user.id, params.help_message)
 
 @bot.message_handler(commands=['sources'])
 def command_handler(message):
@@ -31,7 +30,7 @@ def command_handler(message):
     callback_button_vkcustom = telebot.types.InlineKeyboardButton(url="https://instagram.com/omenboyzcustoms", text="Inst Custom")
     keyboard_url.add(callback_button_vk, callback_button_vkcustom,
                      callback_button_instcustom, callback_button_inst)
-
+    print(message.chat.first_name)
     bot.send_message(message.from_user.id, 'Ниже представлены наши сети, тебя там ждут :)', reply_markup = keyboard_url)
 
 @bot.message_handler(content_types=["text"]) #Старт бота для сообщений
