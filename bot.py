@@ -1,5 +1,6 @@
 import telebot
 import config
+from params import message_all
 import params
 
 bot=telebot.TeleBot(config.token)
