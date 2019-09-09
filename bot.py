@@ -10,8 +10,8 @@ def command_handler(message):
     callback_button = telebot.types.InlineKeyboardButton(text="Начать", callback_data="start_config")
     keyboard_start.add(callback_button)
     user=message.chat.first_name
-    message(user)
-    bot.send_message(message.from_user.id, params.start_message)
+    start_mes=message_all(user)
+    bot.send_message(message.from_user.id, start_mes)
 
 @bot.message_handler(commands=['help'])
 def command_handler(message):

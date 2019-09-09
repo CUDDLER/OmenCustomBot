@@ -1,4 +1,4 @@
-def message(name):
+def message_all(name):
     start_message='Привет, ' + str(name) + ', это бот-конфигуратор OmenBoyzCustom \n Я помогу тебе сделать именно тот дизайн, который ты хочешь!\n Жми "Начать"'
     return start_message
 
