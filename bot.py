@@ -3,7 +3,7 @@ from os import environ
 from params import message_all
 import params
 
-bot =  os.environ['token']
+bot =  environ['token']
 
 @bot.message_handler(commands=['start', 'help'])
 def command_handler(message):
