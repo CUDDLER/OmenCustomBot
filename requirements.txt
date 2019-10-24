@@ -1,3 +1,2 @@
-pytelegrambotapi
+PyTelegramBotAPI==2.2.3
 telegram
-telebot
