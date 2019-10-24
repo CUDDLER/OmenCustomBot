@@ -4,14 +4,6 @@ import params
 
 bot = telebot.TeleBot(environ['token'])
 
-@bot.message_handler(content_types=['text'])  # Старт бота для сообщений
-def text_handler(message):
-    # try:
-    #    return
-    if message.text == "/config":
-        bot.reply_to(message, 'Начала конфигуратора')
-        return
-
 @bot.message_handler(commands=['start'])
 def start_handler(message):
     keyboard_start = telebot.types.InlineKeyboardMarkup()
@@ -20,7 +12,6 @@ def start_handler(message):
     user = message.chat.first_name
     start_mes = message_all(user)
     bot.send_message(message.from_user.id, start_mes)
-
 
 @bot.message_handler(commands=['help'])
 def help_handler(message):
@@ -50,6 +41,15 @@ def sources_handler(message):
 
 # except Exception as error:
 #     print("Excepcion in forward handler. Info: {}".format(error))
+@bot.message_handler(content_types=['text'])  # Старт бота для сообщений
+def text_handler(message):
+    # try:
+    #    return
+    if message.text == "/config":
+        bot.reply_to(message, 'Начала конфигуратора')
+        return
+
+
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
