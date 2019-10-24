@@ -1,6 +1,5 @@
 import telebot
 from os import environ
-from params import message_all
 import params
 
 bot = environ['token']
