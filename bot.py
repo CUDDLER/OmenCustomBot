@@ -2,7 +2,7 @@ import telebot
 from os import environ
 import params
 
-bot = environ['token']
+bot = telebot.TeleBot(environ['token'])
 
 @bot.message_handler(content_types=['text'])  # Старт бота для сообщений
 def text_handler(message):
