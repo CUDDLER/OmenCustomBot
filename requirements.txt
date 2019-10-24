@@ -1,2 +1,2 @@
-PyTelebramBot
+PyTelegramBot
 telegram
