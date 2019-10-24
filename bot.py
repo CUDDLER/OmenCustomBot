@@ -4,6 +4,13 @@ import params
 
 bot = environ['token']
 
+@bot.message_handler(content_types=['text'])  # Старт бота для сообщений
+def text_handler(message):
+    # try:
+    #    return
+    if message.text == "/config":
+        bot.reply_to(message, 'Начала конфигуратора')
+        return
 
 @bot.message_handler(commands=['start'])
 def start_handler(message):
@@ -38,13 +45,7 @@ def sources_handler(message):
     bot.send_message(message.from_user.id, 'Ниже представлены наши сети, тебя там ждут :)', reply_markup=keyboard_url)
 
 
-@bot.message_handler(content_types=['text'])  # Старт бота для сообщений
-def text_handler(message):
-    # try:
-    #    return
-    if message.text == "/config":
-        bot.reply_to(message, 'Начала конфигуратора')
-        return
+
 
 
 # except Exception as error:
